@@ -2,7 +2,10 @@ from flask import render_template, request
 from flask import redirect,url_for
 from PIL import Image
 import os
-from utils import pipeline_model
+import cv2
+#from utils import pipeline_model
+from exface import extract_face
+
 UPLOAD_FLODER = 'static/uploads'
 
 def base():
@@ -29,7 +32,11 @@ def gender():
         path = os.path.join(UPLOAD_FLODER,filename)
         f.save(path)
         w = getwidth(path)
-        pipeline_model(path,filename,color='bgr')
+        px = extract_face(path)
+        cv2.imwrite('./static/predict/{}'.format(filename),px)
+        #pipeline_model(path,filename,color='bgr')
+
+       
 
         return render_template('gender.html',fileupload=True,img_name=filename, w=w)
     return render_template('gender.html',fileupload=False,img_name="freeai.png")
