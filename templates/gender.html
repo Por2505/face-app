@@ -3,15 +3,15 @@
 {% block bodyblock %}
 
     <div class="container">
-    <h3>Create Your Dataset</h3>
+    <h3>Face Detection and Face Recognition</h3>
     </div>
 
     <div class="container">
         <br>
         <form action="#" method="post" enctype="multipart/form-data">
-            <label for="upload">Upload to create your dataset</label>
+            <label for="upload">Upload your image</label>
             <input type="file" id="upload" name="image" required="true">
-            <input type="submit" value="upload to dataset">
+            <input type="submit" value="upload">
         </form>
 
     </div>
@@ -28,7 +28,10 @@
             </div>
         </div>
     </div>
-
+    <div class="container">
+        <center>predicted:{{name}}
+        </center>
+    </div>
     <style>
         #predict{
             border: solid;

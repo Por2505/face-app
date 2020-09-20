@@ -5,6 +5,7 @@ import os
 import cv2
 #from utils import pipeline_model
 from exface import extract_face
+from facerecog import facen
 
 UPLOAD_FLODER = 'static/uploads'
 
@@ -25,6 +26,16 @@ def getwidth(path):
     w = 300 * aspect
     return int(w)
 
+def getname():
+    if request.method == 'POST':
+        f = request.files['image']
+        filename=  f.filename
+        path = os.path.join(UPLOAD_FLODER,filename)
+        f.save(path)
+        name=facenet(path,filename)
+        
+    return name
+
 def gender():
     if request.method == 'POST':
         f = request.files['image']
@@ -32,11 +43,10 @@ def gender():
         path = os.path.join(UPLOAD_FLODER,filename)
         f.save(path)
         w = getwidth(path)
-        px = extract_face(path)
-        cv2.imwrite('./static/predict/{}'.format(filename),px)
+        #px = extract_face(path)
+        #cv2.imwrite('./static/predict/{}'.format(filename),px)
         #pipeline_model(path,filename,color='bgr')
-
-       
-
-        return render_template('gender.html',fileupload=True,img_name=filename, w=w)
+        name = facen(path,filename)
+        #cv2.imwrite('./static/predict/{}'.format(filename),px)
+        return render_template('gender.html',fileupload=True,img_name=filename, w=w,name=name)
     return render_template('gender.html',fileupload=False,img_name="freeai.png")
