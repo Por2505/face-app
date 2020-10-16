@@ -124,6 +124,5 @@ def facen(path,filename):
     print('Predicted: %s (%.3f)' % (predict_name[0], class_prob))
     print('Predicted: \n%s \n%s' % (all_names, yhat_p[0]*100))
     print('Expected: %s' % predict_name)
-
- #cv2.imwrite('./static/predict/{}'.format(filename),random_face)
+    #cv2.imwrite('./static/predict/1.jpg',random_face)
     return predict_name[0]

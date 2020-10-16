@@ -23,15 +23,13 @@
             <div class="col-md-6" id="predict">
                 <img src="{{ url_for('static',filename='uploads/')}}{{ img_name }}" alt="" width="{{ w }}" height="300">
             </div>
-            <div class="col-md-6" id="predict">
-                <img src="{{ url_for('static',filename='predict/')}}{{ img_name }}" alt="" width="{{ w }}" height="300">
-            </div>
+           
+        </div>
+        <div> 
+            predict: {{ name }}
         </div>
     </div>
-    <div class="container">
-        <center>predicted:{{name}}
-        </center>
-    </div>
+    
     <style>
         #predict{
             border: solid;
