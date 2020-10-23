@@ -6,6 +6,7 @@ import cv2
 from exface import extract_face
 from faces import facenett
 import os
+from flask_sqlalchemy import SQLAlchemy 
 
 UPLOAD_FLODER = 'static/uploads'
 def base():

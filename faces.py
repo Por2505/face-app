@@ -102,6 +102,7 @@ yhat_test = model.predict(emdTestX_norm)
 score_train = accuracy_score(trainy_enc, yhat_train)
 score_test = accuracy_score(testy_enc, yhat_test)
 df = pd.read_csv('score.csv')
+
 def facenett(path,filename):
     image = Image.open(path)
     image = image.convert('RGB')
@@ -116,7 +117,7 @@ def facenett(path,filename):
         image = Image.fromarray(face)
         image = image.resize((160,160))
         face_array = np.asarray(image)
-        cv2.imwrite('./static/predict/{}.jpg'.format(filename),face_array)
+        #cv2.imwrite('./static/predict/{}.jpg'.format(filename),face_array)
         cv2.imwrite('./data/img_{}.jpg'.format(i),face_array)
         
     
